@@ -27,12 +27,15 @@ public class CheckedGrounded : MonoBehaviour
         {
             state.SetGrounded(true);
             anim.SetBool("isJump", false);
+            state.SetIsJumping(false);
         }
         else
         {
             state.SetGrounded(false);
             anim.SetBool("isJump", true);
             anim.SetBool("isRun", false);
+            state.SetIsJumping(true);
+            state.SetIsRunning(false);
         }
     }
 

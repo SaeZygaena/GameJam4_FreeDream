@@ -10,6 +10,7 @@ public class PlayerShoot : MonoBehaviour
     private Animator anim;
 
     [SerializeField] Transform bulletOriginPos;
+    [SerializeField] private float power;
 
     public GameObject bullet;
 
@@ -40,16 +41,14 @@ public class PlayerShoot : MonoBehaviour
         _inputActions.Player.Attack.canceled -= OnShoot;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void resetAttack()
     {
-
+        isAttacking = false;
     }
 
     public void OnShoot(InputAction.CallbackContext callback)
     {
-        Debug.Log("Here");
-        if (callback.performed && !isAttacking)
+        if (callback.performed && !isAttacking && !state.GetIsJumping() && !state.GetIsJetPack() && !state.GetIsDead())
         {
             anim.SetTrigger("attack");
             isAttacking = true;
@@ -61,6 +60,7 @@ public class PlayerShoot : MonoBehaviour
         GameObject tempo;
         isAttacking = false;
         tempo = Instantiate(bullet, bulletOriginPos.position, Quaternion.identity);
+        tempo.GetComponent<BulletBehavior>().isPlayer = true;
         if (state.GetIsFlipped())
             tempo.GetComponent<BulletBehavior>().direction = -1;
         else

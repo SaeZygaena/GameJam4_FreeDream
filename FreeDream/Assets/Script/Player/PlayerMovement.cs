@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rBody.linearVelocity = new Vector2(moveDirection.x * Time.deltaTime * speed, rBody.linearVelocityY);
+        rBody.linearVelocity = new Vector2(moveDirection.x * Time.fixedDeltaTime * speed, rBody.linearVelocityY);
     }
 
     void LinkActions(InputSystem_Actions _inputActions)
@@ -69,15 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !state.GetIsDead())
         {
             moveDirection = context.ReadValue<Vector2>();
-            /*if (!anim.GetBool("isJump"))
-            {
-                anim.SetBool("isRun", true);
-                state.SetIsRunning(true);
-            }*/
-
             FlipPlayer();
         }
 

@@ -13,4 +13,9 @@ public class PlayerInputAction : MonoBehaviour
     {
         return inputActions;
     }
+
+    public void OnDisable()
+    {
+        inputActions.Disable();
+    }
 }
