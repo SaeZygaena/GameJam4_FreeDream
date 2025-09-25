@@ -9,12 +9,14 @@ public class CheckedGrounded : MonoBehaviour
     private PlayerState state;
     public Transform posRayOne;
     public Transform posRayTwo;
+    private Animator anim;
     [SerializeField] private float rayLength = 1f;
     [SerializeField] private LayerMask mask;
 
     void Start()
     {
         state = GetComponent<PlayerState>();
+        anim = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -24,10 +26,13 @@ public class CheckedGrounded : MonoBehaviour
         if (hitRayOne.collider != null || hitRayTwo.collider != null)
         {
             state.SetGrounded(true);
+            anim.SetBool("isJump", false);
         }
         else
         {
             state.SetGrounded(false);
+            anim.SetBool("isJump", true);
+            anim.SetBool("isRun", false);
         }
     }
 
