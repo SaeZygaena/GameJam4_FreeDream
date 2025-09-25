@@ -2,6 +2,8 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DamageController : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class DamageController : MonoBehaviour
         Swordman,
         Player
     }
+    [SerializeField] private List<Image> listHeart;
     [SerializeField] private TypeEntity typeEntity;
     private bool isTakingDamage = false;
     private Animator anim;
@@ -46,13 +49,13 @@ public class DamageController : MonoBehaviour
         }
     }
 
-    public void OnDamage()
+    public void OnDamage(float _change)
     {
         if (typeEntity == TypeEntity.Player)
         {
-            PlayerDamage();
+            PlayerDamage(_change);
         }
-        else if (typeEntity == TypeEntity.Turret || typeEntity == TypeEntity.Gunner || typeEntity == TypeEntity.Swordman)
+        else
         {
             EnemyDamage();
         }
@@ -63,9 +66,50 @@ public class DamageController : MonoBehaviour
     #region /////////// PLAYER //////
 
 
-    private void PlayerDamage()
+    private void PlayerDamage(float _change)
     {
-        anim.SetTrigger("hurt");
+        if (!GetComponent<PlayerState>().GetIsDead())
+            anim.SetTrigger("hurt");
+        UnfillHeart(_change);
+        if (_change < 0)
+        {
+            StartCoroutine(FlashHeart());
+        }
+    }
+
+    private void UnfillHeart(float _change)
+    {
+        foreach (var heart in listHeart)
+        {
+            if (heart.fillAmount != 0)
+            {
+                Debug.Log("Avant : " + heart.fillAmount);
+                Debug.Log("Calcul : " + _change * 0.25f);
+                heart.fillAmount += _change * 0.25f;
+                Debug.Log("Here Unfill");
+                Debug.Log(heart.fillAmount);
+                return;
+            }
+        }
+    }
+
+    IEnumerator FlashHeart()
+    {
+        Color tempo = Color.white;
+
+        foreach (var heart in listHeart)
+        {
+            heart.color = Color.black;
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        foreach (var heart in listHeart)
+        {
+            heart.color = tempo;
+        }
+        yield return new WaitForSeconds(0.1f);
+
     }
 
     private void PlayerDeath()

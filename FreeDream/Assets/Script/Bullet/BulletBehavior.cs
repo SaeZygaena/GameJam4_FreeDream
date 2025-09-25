@@ -24,7 +24,7 @@ public class BulletBehavior : MonoBehaviour
     public int direction = 1;
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1.5f);
         rBody = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
