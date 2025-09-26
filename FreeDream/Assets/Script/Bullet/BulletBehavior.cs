@@ -11,20 +11,24 @@ public class BulletBehavior : MonoBehaviour
     public bool isPlayer = false;
     public float power = 1;
     [SerializeField] private float speedBullet;
+    [SerializeField] private float deleteTimer;
 
     enum BulletType
     {
         Accelerating,
         ConstantSpeed,
-        TargetPlayer
+        TargetPlayer,
+        Static
     }
 
     [SerializeField] private BulletType bulletType;
 
     public int direction = 1;
+
+    public void setDirection(int _direction) { direction = _direction; }
     void Start()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, deleteTimer);
         rBody = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
@@ -39,6 +43,8 @@ public class BulletBehavior : MonoBehaviour
                 break;
             case BulletType.TargetPlayer:
                 TargetPlayerBullet();
+                break;
+            case BulletType.Static:
                 break;
             default:
                 break;

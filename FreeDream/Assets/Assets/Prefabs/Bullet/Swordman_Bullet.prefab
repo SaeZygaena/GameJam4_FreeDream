@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7925477282802539341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1657506009793673816, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_Name
+      value: Swordman_Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6890903
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.4081435
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.4847
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.7453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119716329240992233, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657325347515567022, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1657506009793673816, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6653420732953949585}
+  m_SourcePrefab: {fileID: 100100000, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+--- !u!1 &8862054331513053461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1657506009793673816, guid: cc6492d382a1b004daa5fbc3e7bd0d2d, type: 3}
+  m_PrefabInstance: {fileID: 7925477282802539341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6653420732953949585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862054331513053461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a788dc6e3e10c46baae15f35563029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
+  isPlayer: 0
+  power: 1
+  speedBullet: 0
+  deleteTimer: 0.1
+  bulletType: 3
+  direction: 1

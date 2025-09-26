@@ -28,7 +28,7 @@ public class HealthComponent : MonoBehaviour
 
     public void HealChange(float _change)
     {
-        if (!iFrame || !isPlayer)
+        if (!iFrame || !isPlayer ||_change > 0)
         {
             if (isPlayer && _change < 0)
                 StartCoroutine(InternalCooldown());
@@ -42,7 +42,7 @@ public class HealthComponent : MonoBehaviour
                 isDead = true;
                 damageControl.OnDeath();
             }
-            
+
         }
     }
 

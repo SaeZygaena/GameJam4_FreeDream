@@ -174,7 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a788dc6e3e10c46baae15f35563029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
+  isPlayer: 0
+  power: 1
   speedBullet: 10
+  deleteTimer: 1.5
   bulletType: 2
   direction: 1
 --- !u!50 &2715298016543819247

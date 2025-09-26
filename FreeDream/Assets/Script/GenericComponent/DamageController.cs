@@ -8,7 +8,7 @@ using System.Linq;
 
 public class DamageController : MonoBehaviour
 {
-    enum TypeEntity
+    public enum TypeEntity
     {
         Turret,
         Gunner,
@@ -40,8 +40,10 @@ public class DamageController : MonoBehaviour
                 TurretDeath();
                 break;
             case TypeEntity.Gunner:
+                GunnerDeath();
                 break;
             case TypeEntity.Swordman:
+                SwordmanDeath();
                 break;
             case TypeEntity.Player:
                 PlayerDeath();
@@ -72,9 +74,6 @@ public class DamageController : MonoBehaviour
     {
         if (!GetComponent<PlayerState>().GetIsDead() && _change < 0)
             anim.SetTrigger("hurt");
-        
-
-        Debug.Log(_change);
 
         if (_change < 0)
         {
@@ -90,35 +89,47 @@ public class DamageController : MonoBehaviour
 
     private void UnfillHeart(float _change)
     {
-        
+        float currentNbChange = 0;
+
         foreach (var heart in listHeart)
         {
-            if (heart.fillAmount != 0)
+            while (currentNbChange != Mathf.Abs(_change))
             {
-                Debug.Log("Avant : " + heart.fillAmount);
-                Debug.Log("Calcul : " + _change * 0.25f);
-                heart.fillAmount += _change * 0.25f;
-                Debug.Log("Here Unfill");
-                Debug.Log(heart.fillAmount);
-                return;
+                if (heart.fillAmount != 0)
+                {
+                    heart.fillAmount -= 0.25f;
+                    currentNbChange += 1;
+                }
+
+                if (heart.fillAmount == 0)
+                    break;
             }
+
+            if (currentNbChange == _change)
+                return;
         }
     }
 
     private void FillHeart(float _change)
     {
-        
+        float currentNbChange = 0;
+
         foreach (var heart in listHeart.AsEnumerable().Reverse())
         {
-            if (heart.fillAmount != 1)
+            while (currentNbChange != Mathf.Abs(_change))
             {
-                Debug.Log("Avant : " + heart.fillAmount);
-                Debug.Log("Calcul : " + _change * 0.25f);
-                heart.fillAmount += _change * 0.25f;
-                Debug.Log("Here Unfill");
-                Debug.Log(heart.fillAmount);
-                return;
+                if (heart.fillAmount != 1)
+                {
+                    heart.fillAmount += 0.25f;
+                    currentNbChange += 1;
+                }
+
+                if (heart.fillAmount == 1)
+                    break;
             }
+
+            if (currentNbChange == _change)
+                return;
         }
     }
 
@@ -190,13 +201,17 @@ public class DamageController : MonoBehaviour
 
     IEnumerator ColorFlash()
     {
-        sprite.color = Color.red;
+        sprite.color = Color.black;
+        sprite.enabled = false;
         yield return new WaitForSeconds(0.1f);
         sprite.color = color;
+        sprite.enabled = true;
         yield return new WaitForSeconds(0.1f);
-        sprite.color = Color.red;
+        sprite.color = Color.black;
+        sprite.enabled = false;
         yield return new WaitForSeconds(0.1f);
         sprite.color = color;
+        sprite.enabled = true;
         isTakingDamage = false;
     }
 
@@ -211,11 +226,19 @@ public class DamageController : MonoBehaviour
 
     #region /////////// SWORDMAN //////
 
+    private void SwordmanDeath()
+    {
+        Destroy(gameObject);
+    }
 
     #endregion
 
     #region /////////// GUNNER //////
 
+    private void GunnerDeath()
+    {
+        Destroy(gameObject);
+    }
 
     #endregion
 
