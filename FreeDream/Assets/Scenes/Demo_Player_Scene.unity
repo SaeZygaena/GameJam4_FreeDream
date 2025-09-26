@@ -311,6 +311,10 @@ MonoBehaviour:
   - {fileID: 1191819517}
   - {fileID: 143311348}
   - {fileID: 352476001}
+  listHeartRect:
+  - {fileID: 1191819516}
+  - {fileID: 143311347}
+  - {fileID: 352476000}
   typeEntity: 3
 --- !u!1 &47087224
 GameObject:
@@ -646,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageController
   listHeart: []
+  listHeartRect: []
   typeEntity: 0
 --- !u!114 &210158447
 MonoBehaviour:
