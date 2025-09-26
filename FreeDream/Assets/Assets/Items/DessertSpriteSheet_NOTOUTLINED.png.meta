@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: e36a5b11d80cd6c4fa88a1f06bfe7f64
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7235481914149574287
+    second: DessertSpriteSheet_NOTOUTLINED_0
+  - first:
+      213: 4929671240362773998
+    second: DessertSpriteSheet_NOTOUTLINED_1
+  - first:
+      213: -5074075833877986745
+    second: DessertSpriteSheet_NOTOUTLINED_2
+  - first:
+      213: 2326238486642083244
+    second: DessertSpriteSheet_NOTOUTLINED_3
+  - first:
+      213: 5586714680711820811
+    second: DessertSpriteSheet_NOTOUTLINED_4
+  - first:
+      213: 5431188413990363652
+    second: DessertSpriteSheet_NOTOUTLINED_5
+  - first:
+      213: 3676222258407963360
+    second: DessertSpriteSheet_NOTOUTLINED_6
+  - first:
+      213: -7607477123836484691
+    second: DessertSpriteSheet_NOTOUTLINED_7
+  - first:
+      213: -866721827139491316
+    second: DessertSpriteSheet_NOTOUTLINED_8
+  - first:
+      213: 3625980899036651583
+    second: DessertSpriteSheet_NOTOUTLINED_9
+  - first:
+      213: 3741095855453021706
+    second: DessertSpriteSheet_NOTOUTLINED_10
+  - first:
+      213: -692746530589884088
+    second: DessertSpriteSheet_NOTOUTLINED_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 37
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179e958c887669b90800000000000000
+      internalID: -7235481914149574287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 36
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed4845efd5b96440800000000000000
+      internalID: 4929671240362773998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 34
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7420f46a9e24599b0800000000000000
+      internalID: -5074075833877986745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 36
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5c4232495784020800000000000000
+      internalID: 2326238486642083244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 36
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b06b945076ff78d40800000000000000
+      internalID: 5586714680711820811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 36
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402ec1c36157f5b40800000000000000
+      internalID: 5431188413990363652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 5
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea7ac3aaa0940330800000000000000
+      internalID: 3676222258407963360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 2
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3e0dcacdfcc6690800000000000000
+      internalID: -7607477123836484691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 3
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0ae54e1719c8f3f0800000000000000
+      internalID: -866721827139491316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f306e699a62125230800000000000000
+      internalID: 3625980899036651583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_10
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a06a6fefbda0be330800000000000000
+      internalID: 3741095855453021706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DessertSpriteSheet_NOTOUTLINED_11
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 2
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8414ec463bed266f0800000000000000
+      internalID: -692746530589884088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DessertSpriteSheet_NOTOUTLINED_0: -7235481914149574287
+      DessertSpriteSheet_NOTOUTLINED_1: 4929671240362773998
+      DessertSpriteSheet_NOTOUTLINED_10: 3741095855453021706
+      DessertSpriteSheet_NOTOUTLINED_11: -692746530589884088
+      DessertSpriteSheet_NOTOUTLINED_2: -5074075833877986745
+      DessertSpriteSheet_NOTOUTLINED_3: 2326238486642083244
+      DessertSpriteSheet_NOTOUTLINED_4: 5586714680711820811
+      DessertSpriteSheet_NOTOUTLINED_5: 5431188413990363652
+      DessertSpriteSheet_NOTOUTLINED_6: 3676222258407963360
+      DessertSpriteSheet_NOTOUTLINED_7: -7607477123836484691
+      DessertSpriteSheet_NOTOUTLINED_8: -866721827139491316
+      DessertSpriteSheet_NOTOUTLINED_9: 3625980899036651583
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

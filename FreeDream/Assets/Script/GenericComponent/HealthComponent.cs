@@ -30,7 +30,8 @@ public class HealthComponent : MonoBehaviour
     {
         if (!iFrame || !isPlayer)
         {
-            StartCoroutine(InternalCooldown());
+            if (isPlayer && _change < 0)
+                StartCoroutine(InternalCooldown());
             currentHealth += _change;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 

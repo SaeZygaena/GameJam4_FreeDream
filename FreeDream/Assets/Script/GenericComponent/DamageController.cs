@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class DamageController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class DamageController : MonoBehaviour
         Player
     }
     [SerializeField] private List<Image> listHeart;
+    [SerializeField] private List<RectTransform> listHeartRect;
     [SerializeField] private TypeEntity typeEntity;
     private bool isTakingDamage = false;
     private Animator anim;
@@ -68,17 +70,27 @@ public class DamageController : MonoBehaviour
 
     private void PlayerDamage(float _change)
     {
-        if (!GetComponent<PlayerState>().GetIsDead())
+        if (!GetComponent<PlayerState>().GetIsDead() && _change < 0)
             anim.SetTrigger("hurt");
-        UnfillHeart(_change);
+        
+
+        Debug.Log(_change);
+
         if (_change < 0)
         {
+            UnfillHeart(_change);
             StartCoroutine(FlashHeart());
+        }
+        else
+        {
+            FillHeart(_change);
+            StartCoroutine(BumpHeart());
         }
     }
 
     private void UnfillHeart(float _change)
     {
+        
         foreach (var heart in listHeart)
         {
             if (heart.fillAmount != 0)
@@ -92,6 +104,26 @@ public class DamageController : MonoBehaviour
             }
         }
     }
+
+    private void FillHeart(float _change)
+    {
+        
+        foreach (var heart in listHeart.AsEnumerable().Reverse())
+        {
+            if (heart.fillAmount != 1)
+            {
+                Debug.Log("Avant : " + heart.fillAmount);
+                Debug.Log("Calcul : " + _change * 0.25f);
+                heart.fillAmount += _change * 0.25f;
+                Debug.Log("Here Unfill");
+                Debug.Log(heart.fillAmount);
+                return;
+            }
+        }
+    }
+
+
+
 
     IEnumerator FlashHeart()
     {
@@ -112,6 +144,24 @@ public class DamageController : MonoBehaviour
 
     }
 
+    IEnumerator BumpHeart()
+    {
+
+        foreach (var heart in listHeartRect)
+        {
+            heart.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        foreach (var heart in listHeartRect)
+        {
+            heart.localScale = new Vector3(0.8f, 0.8f, 1f);
+        }
+        yield return new WaitForSeconds(0.1f);
+
+    }
+
     private void PlayerDeath()
     {
         if (!GetComponent<PlayerState>().GetIsDead())
@@ -126,6 +176,8 @@ public class DamageController : MonoBehaviour
 
 
     #endregion
+
+
     #region ////////// ENEMIES //////////
     private void EnemyDamage()
     {
