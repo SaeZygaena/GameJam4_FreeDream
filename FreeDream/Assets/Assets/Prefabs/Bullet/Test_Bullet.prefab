@@ -177,6 +177,7 @@ MonoBehaviour:
   isPlayer: 0
   power: 1
   speedBullet: 10
+  deleteTimer: 1.5
   bulletType: 1
   direction: 1
 --- !u!50 &2715298016543819247

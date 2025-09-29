@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
     {
         anim.SetBool("isAttack", false);
         animationAttack.SetActive(false);
-        moveController.SetPatrol(true);
+        //moveController.SetPatrol(true);
 
         canAttack = false;
         isAttacking = false;

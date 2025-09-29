@@ -13,8 +13,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform limitChaseOne;
     [SerializeField] private Transform limitChaseTwo;
 
-    private bool isPatrol;
-    private bool isChase;
+    [SerializeField] private bool isPatrol;
+    [SerializeField] private bool isChase;
     private int currentTargetIndex;
 
     private float direction = 1;
@@ -57,9 +57,6 @@ public class EnemyMovement : MonoBehaviour
         if (isChase)
         {
             CheckForward();
-
-            Debug.Log(" One Distance = " + Vector2.Distance(transform.position, limitChaseOne.position));
-            Debug.Log(" Two Distance = " + Vector2.Distance(transform.position, limitChaseTwo.position));
 
             if (Vector2.Distance(transform.position, limitChaseOne.position) > 1f
             && Vector2.Distance(transform.position, limitChaseTwo.position) > 1f)

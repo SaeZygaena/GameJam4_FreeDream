@@ -47,8 +47,8 @@ public class HealthModifierZone : MonoBehaviour
     {
         while (isDoingDoTDamage)
         {
-            yield return new WaitForSeconds(1f);
             collision.GetComponent<HealthComponent>().HealChange(-power);
+            yield return new WaitForSeconds(1f);
         }
     }
 

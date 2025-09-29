@@ -8,8 +8,8 @@ public class PlayerAction : MonoBehaviour
 
     private bool isHoldingJump = false;
     private Rigidbody2D rBody;
-    private float jumpForce = 2f;
-    private float jumpForceMax = 5f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForceMax = 5f;
     private float addJumpForce = 0f;
 
     private PlayerState state;
@@ -21,6 +21,8 @@ public class PlayerAction : MonoBehaviour
     private bool canCheckGrounded = false;
 
     public GameObject particleEffect;
+
+    private bool isPressDown = false;
 
 
     void Start()
@@ -45,6 +47,9 @@ public class PlayerAction : MonoBehaviour
         _inputActions.Player.Cancel.started += OnCancel;
         _inputActions.Player.Cancel.performed += OnCancel;
         _inputActions.Player.Cancel.canceled += OnCancel;
+
+        _inputActions.Player.GoDown.started += ctx => isPressDown = true;
+        _inputActions.Player.GoDown.canceled += ctx => isPressDown = false;
     }
     void UnlinkActions(InputSystem_Actions _inputActions)
     {
@@ -55,6 +60,9 @@ public class PlayerAction : MonoBehaviour
         _inputActions.Player.Cancel.started -= OnCancel;
         _inputActions.Player.Cancel.performed -= OnCancel;
         _inputActions.Player.Cancel.canceled -= OnCancel;
+
+        _inputActions.Player.GoDown.started -= ctx => isPressDown = true;
+        _inputActions.Player.GoDown.canceled -= ctx => isPressDown = false;
     }
 
     void Update()
@@ -74,10 +82,13 @@ public class PlayerAction : MonoBehaviour
 
     void OnAction(InputAction.CallbackContext context)
     {
-        if (state.GetActionType() == PlayerState.ActionType.Jump)
-            JumpAction(context);
-        if (state.GetActionType() == PlayerState.ActionType.JetPack)
-            JetPackAction(context);
+        if (!isPressDown)
+        {
+            if (state.GetActionType() == PlayerState.ActionType.Jump)
+                JumpAction(context);
+            if (state.GetActionType() == PlayerState.ActionType.JetPack)
+                JetPackAction(context);
+        }
     }
 
     #region //////////////// JUMP ACTION //////////////////
@@ -107,7 +118,7 @@ public class PlayerAction : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             rBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            addJumpForce += jumpForce;
+            addJumpForce += 1;
         }
     }
 
