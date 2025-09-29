@@ -16,7 +16,7 @@ MonoBehaviour:
   - From: OtherworldCam
     To: FollowingCam
     Blend:
-      Style: 2
+      Style: 0
       Time: 1
       CustomCurve:
         serializedVersion: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
   - From: FollowingCam
     To: OtherworldCam
     Blend:
-      Style: 5
+      Style: 0
       Time: 1
       CustomCurve:
         serializedVersion: 2

@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     private EnemyMovement moveController;
     private bool canAttack = false;
     private bool isAttacking = false;
+
+    private bool attackLaunch = false;
     private Vector3 targetPosition;
 
     private GameObject playerPos;
@@ -75,6 +77,7 @@ public class EnemyController : MonoBehaviour
     public void LaunchMeleeAttack()
     {
         anim.SetBool("isAttack", true);
+        attackLaunch = true;
         moveController.SetChase(false);
         moveController.SetPatrol(false);
     }
@@ -85,8 +88,10 @@ public class EnemyController : MonoBehaviour
         animationAttack.SetActive(false);
         //moveController.SetPatrol(true);
 
+
         canAttack = false;
         isAttacking = false;
+        attackLaunch = false;
     }
 
     public void HitMeleeAttack()
@@ -160,8 +165,9 @@ public class EnemyController : MonoBehaviour
             moveController.SetPatrol(true);
         }
 
-        if (typeEnemy == TypeEnemy.Swordman)
+        if (typeEnemy == TypeEnemy.Swordman && !attackLaunch)
         {
+
             moveController.SetBonusSpeed(0);
 
             if (moveController.GetChase())
@@ -171,7 +177,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-
             anim.SetBool("isAttack", false);
             canAttack = false;
             isAttacking = false;

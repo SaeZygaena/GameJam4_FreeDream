@@ -22,19 +22,37 @@ public class CinemachineSwap : MonoBehaviour
 
     void LinkActions(InputSystem_Actions _inputActions)
     {
-        _inputActions.Player.Camera.started += OnSwitch;
+        /*_inputActions.Player.Camera.started += OnSwitch;
         _inputActions.Player.Camera.performed += OnSwitch;
-        _inputActions.Player.Camera.canceled += OnSwitch;
+        _inputActions.Player.Camera.canceled += OnSwitch;*/
+
+        BinocularManager.ObservePanorama += OnSwitch;
+        BinocularManager.ObservePanorama += OnSwitch;
+        BinocularManager.ObservePanorama += OnSwitch;
 
     }
     void UnlinkActions(InputSystem_Actions _inputActions)
     {
-        _inputActions.Player.Camera.started -= OnSwitch;
+        /*_inputActions.Player.Camera.started -= OnSwitch;
         _inputActions.Player.Camera.performed -= OnSwitch;
-        _inputActions.Player.Camera.canceled -= OnSwitch;
+        _inputActions.Player.Camera.canceled -= OnSwitch;*/
+
+        BinocularManager.ObservePanorama += OnSwitch;
+        BinocularManager.ObservePanorama += OnSwitch;
+        BinocularManager.ObservePanorama += OnSwitch;
+
     }
 
-    public void OnSwitch(InputAction.CallbackContext context)
+    public void OnSwitch(bool _bo)
+    {
+        if (overworldCam)
+            anim.Play("OverWorld");
+        else
+            anim.Play("Following");
+        overworldCam = !overworldCam;
+    }
+
+    /*public void OnSwitch(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -44,11 +62,10 @@ public class CinemachineSwap : MonoBehaviour
             }
             else
             {
-                Debug.Log("Here");
                 anim.Play("OverWorld");
             }
             overworldCam = !overworldCam;
         }
 
-    }
+    }*/
 }

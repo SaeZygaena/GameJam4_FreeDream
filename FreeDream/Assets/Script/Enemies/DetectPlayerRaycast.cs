@@ -28,6 +28,7 @@ public class DetectPlayerRaycast : MonoBehaviour
         {
             if (isMeleeCheck)
             {
+                parent.PlayerEnter(hitRayOne.collider);
                 parent.LaunchMeleeAttack();
             }
             else

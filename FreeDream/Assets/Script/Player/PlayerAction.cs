@@ -9,8 +9,8 @@ public class PlayerAction : MonoBehaviour
     private bool isHoldingJump = false;
     private Rigidbody2D rBody;
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float jumpForceMax = 5f;
-    private float addJumpForce = 0f;
+    //[SerializeField] private float jumpForceMax = 5f;
+    //private float addJumpForce = 0f;
 
     private PlayerState state;
 
@@ -24,6 +24,8 @@ public class PlayerAction : MonoBehaviour
 
     private bool isPressDown = false;
 
+    private bool timerJumpFinished = false;
+
 
     void Start()
     {
@@ -31,6 +33,20 @@ public class PlayerAction : MonoBehaviour
         state = GetComponent<PlayerState>();
         rBody = GetComponent<Rigidbody2D>();
         LinkActions(inputActions.getInput());
+    }
+
+    private void FixedUpdate()
+    {
+        if (isHoldingJump && !timerJumpFinished)
+        {
+            rBody.linearVelocity = new Vector2(0, jumpForce * Time.fixedDeltaTime);
+        }
+    }
+
+    IEnumerator TimerJump()
+    {
+        yield return new WaitForSeconds(0.4f);
+        timerJumpFinished = true;
     }
 
     void OnDisable()
@@ -97,22 +113,26 @@ public class PlayerAction : MonoBehaviour
     {
         if (context.started && state.GetGrounded() && !state.GetIsDead())
         {
-
+            
+            jumpCoroutine = StartCoroutine(TimerJump());
             isHoldingJump = true;
             state.SetIsJumping(true);
-            rBody.AddForce(new Vector2(0, 5f), ForceMode2D.Impulse);
-            jumpCoroutine = StartCoroutine(AccumulatingJump());
+            //rBody.AddForce(new Vector2(0, 5f), ForceMode2D.Impulse);
+            //jumpCoroutine = StartCoroutine(AccumulatingJump());
         }
 
         if (context.canceled && !state.GetIsDead())
         {
+            timerJumpFinished = false;
             isHoldingJump = false;
-            addJumpForce = 0;
-            StopCoroutine(jumpCoroutine);
+            //addJumpForce = 0;
+            rBody.gravityScale = 3;
+            if (jumpCoroutine != null)
+                StopCoroutine(jumpCoroutine);
         }
     }
 
-    IEnumerator AccumulatingJump()
+   /* IEnumerator AccumulatingJump()
     {
         while (isHoldingJump && addJumpForce < jumpForceMax)
         {
@@ -120,7 +140,7 @@ public class PlayerAction : MonoBehaviour
             rBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             addJumpForce += 1;
         }
-    }
+    }*/
 
     #endregion
 
@@ -156,8 +176,8 @@ public class PlayerAction : MonoBehaviour
             if (jetPackCoroutine != null)
                 StopCoroutine(jetPackCoroutine);
             enableJetPack = false;
+            state.SetIsJetPack(false);
             particleEffect.SetActive(false);
-
         }
     }
 
@@ -169,7 +189,6 @@ public class PlayerAction : MonoBehaviour
         canCheckGrounded = true;
         rBody.gravityScale = 0.3f;
         rBody.linearVelocity = Vector2.zero;
-        state.SetIsJetPack(false);
     }
 
     #endregion

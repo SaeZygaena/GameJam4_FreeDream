@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class DamageController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class DamageController : MonoBehaviour
     [SerializeField] private List<Image> listHeart;
     [SerializeField] private List<RectTransform> listHeartRect;
     [SerializeField] private TypeEntity typeEntity;
+    [SerializeField] private GameObject dropItem;
+    [SerializeField] private GameObject deathEffect;
     private bool isTakingDamage = false;
     private Animator anim;
     private Color color;
@@ -219,6 +222,7 @@ public class DamageController : MonoBehaviour
 
     private void TurretDeath()
     {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
@@ -228,6 +232,7 @@ public class DamageController : MonoBehaviour
 
     private void SwordmanDeath()
     {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
@@ -237,6 +242,8 @@ public class DamageController : MonoBehaviour
 
     private void GunnerDeath()
     {
+        Instantiate(dropItem, transform.position, Quaternion.identity);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

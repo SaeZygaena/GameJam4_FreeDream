@@ -285,3 +285,5 @@ MonoBehaviour:
   listHeart: []
   listHeartRect: []
   typeEntity: 0
+  dropItem: {fileID: 0}
+  deathEffect: {fileID: 2823915003999904979, guid: 314cd141879dec349bdfba744db7bdf3, type: 3}

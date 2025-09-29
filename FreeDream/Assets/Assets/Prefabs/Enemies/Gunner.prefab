@@ -416,6 +416,8 @@ MonoBehaviour:
   listHeart: []
   listHeartRect: []
   typeEntity: 1
+  dropItem: {fileID: 4074113413346800515, guid: 513e05cc15bf5314ea0db466176d28f1, type: 3}
+  deathEffect: {fileID: 6373337085154525605, guid: 474eeab267943e54e891ad9739167ea7, type: 3}
 --- !u!114 &7078615857114045227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,4 +459,5 @@ MonoBehaviour:
   limitChaseTwo: {fileID: 0}
   isPatrol: 0
   isChase: 0
+  isReverse: 0
   flipHasBeenFixed: 0

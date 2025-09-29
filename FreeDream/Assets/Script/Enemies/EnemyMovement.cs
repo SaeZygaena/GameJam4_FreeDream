@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private bool isPatrol;
     [SerializeField] private bool isChase;
+    [SerializeField] private bool isReverse;
     private int currentTargetIndex;
 
     private float direction = 1;
@@ -71,6 +72,8 @@ public class EnemyMovement : MonoBehaviour
         Vector3 tempo = transform.localScale;
 
         transform.localScale = transform.position.x < targetPos[0].position.x ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
+        if (isReverse)
+            transform.localScale = transform.position.x > targetPos[0].position.x ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
 
         if (tempo != transform.localScale)
             flipHasBeenFixed = true;

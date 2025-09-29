@@ -10,11 +10,13 @@ public class CheckedGrounded : MonoBehaviour
     public Transform posRayOne;
     public Transform posRayTwo;
     private Animator anim;
+    private Rigidbody2D rbody;
     [SerializeField] private float rayLength = 1f;
     [SerializeField] private LayerMask mask;
 
     void Start()
     {
+        rbody = GetComponent<Rigidbody2D>();
         state = GetComponent<PlayerState>();
         anim = GetComponent<Animator>();
     }
@@ -28,6 +30,10 @@ public class CheckedGrounded : MonoBehaviour
             state.SetGrounded(true);
             anim.SetBool("isJump", false);
             state.SetIsJumping(false);
+            if (rbody.gravityScale != 1)
+            {
+                rbody.gravityScale = 1;
+            }
         }
         else
         {
@@ -36,6 +42,11 @@ public class CheckedGrounded : MonoBehaviour
             anim.SetBool("isRun", false);
             state.SetIsJumping(true);
             state.SetIsRunning(false);
+
+            if (rbody.gravityScale != 4 && !state.GetIsJetPack())
+            {
+                rbody.gravityScale = 4;
+            }
         }
     }
 
