@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
@@ -9,17 +10,32 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private bool isJetPack;
     [SerializeField] private bool isFlipped;
     [SerializeField] private bool isDead;
+    [SerializeField] private bool isNotMovable = false;
 
     private int nbKeys = 0;
 
     void OnEnable()
     {
         Collectible_Item.AddKey += AddKeyCount;
+        BinocularManager.ObservePanorama += SwitchMovable;
     }
 
     void OnDisable()
     {
         Collectible_Item.AddKey -= AddKeyCount;
+         BinocularManager.ObservePanorama -= SwitchMovable;
+    }
+
+    private void SwitchMovable(BinocularManager.PanoramaType _type)
+    {
+        if (_type == BinocularManager.PanoramaType.Following)
+        {
+            isNotMovable = false;
+        }
+        else
+        {
+            isNotMovable = true;
+        }
     }
 
     private void AddKeyCount()
@@ -58,4 +74,7 @@ public class PlayerState : MonoBehaviour
 
     public void SetIsDead(bool _state) { isDead = _state; }
     public bool GetIsDead() { return isDead; }
+
+    public void SetIsNotMovable(bool _state) { isNotMovable = _state; }
+    public bool GetIsNotMovable() { return isNotMovable; }
 }

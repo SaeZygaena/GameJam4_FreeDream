@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed && !state.GetIsDead())
+        if (context.performed && !state.GetIsDead() && !state.GetIsNotMovable())
         {
             moveDirection = context.ReadValue<Vector2>();
             FlipPlayer();

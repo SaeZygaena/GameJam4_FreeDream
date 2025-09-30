@@ -1,18 +1,39 @@
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CinemachineSwap : MonoBehaviour
 {
-    private PlayerInputAction inputActions;
-    private Animator anim;
+    //private static CinemachineSwap Instance;
 
-    private bool overworldCam = true;
+    [SerializeField] private CinemachineCamera camFollow;
+    private PlayerInputAction inputActions;
+    [SerializeField] private Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        /*if (!Instance)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }*/
+
+        camFollow.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+
+        Debug.Log(anim);
+    }
+
     void Start()
     {
         inputActions = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInputAction>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         LinkActions(inputActions.getInput());
+        Debug.Log("Start : " + anim);
     }
 
     void OnDisable()
@@ -22,50 +43,21 @@ public class CinemachineSwap : MonoBehaviour
 
     void LinkActions(InputSystem_Actions _inputActions)
     {
-        /*_inputActions.Player.Camera.started += OnSwitch;
-        _inputActions.Player.Camera.performed += OnSwitch;
-        _inputActions.Player.Camera.canceled += OnSwitch;*/
-
-        BinocularManager.ObservePanorama += OnSwitch;
-        BinocularManager.ObservePanorama += OnSwitch;
         BinocularManager.ObservePanorama += OnSwitch;
 
     }
     void UnlinkActions(InputSystem_Actions _inputActions)
     {
-        /*_inputActions.Player.Camera.started -= OnSwitch;
-        _inputActions.Player.Camera.performed -= OnSwitch;
-        _inputActions.Player.Camera.canceled -= OnSwitch;*/
-
-        BinocularManager.ObservePanorama += OnSwitch;
-        BinocularManager.ObservePanorama += OnSwitch;
-        BinocularManager.ObservePanorama += OnSwitch;
+        BinocularManager.ObservePanorama -= OnSwitch;
 
     }
 
-    public void OnSwitch(bool _bo)
+    public void OnSwitch(BinocularManager.PanoramaType _type)
     {
-        if (overworldCam)
+        Debug.Log("I'm here OnSwitch : " + anim);
+        if (_type == BinocularManager.PanoramaType.PanoramaOne)
             anim.Play("OverWorld");
-        else
+        else if (_type == BinocularManager.PanoramaType.Following)
             anim.Play("Following");
-        overworldCam = !overworldCam;
     }
-
-    /*public void OnSwitch(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (overworldCam)
-            {
-                anim.Play("Following");
-            }
-            else
-            {
-                anim.Play("OverWorld");
-            }
-            overworldCam = !overworldCam;
-        }
-
-    }*/
 }

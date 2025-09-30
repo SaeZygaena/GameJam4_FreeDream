@@ -6,6 +6,7 @@ public class HealthModifierZone : MonoBehaviour
     [SerializeField] private bool isDoT;
     [SerializeField] private bool isDestroyAfterUse;
     [SerializeField] private float power;
+    [SerializeField] private bool isHeal;
 
     private bool isDoingDoTDamage;
 
@@ -19,7 +20,11 @@ public class HealthModifierZone : MonoBehaviour
                 OneInstanceDamage(collision);
 
             if (isDestroyAfterUse)
+            {
+                if (isHeal)
+                    AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.item_eat);
                 Destroy(gameObject);
+            }
         }
     }
 

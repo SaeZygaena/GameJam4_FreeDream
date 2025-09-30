@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DoorManager : MonoBehaviour
 {
+    [SerializeField] private string sceneName;
+    [SerializeField] private AudioManager.CodeOST nextOST;
     public static event Action OpenDoor;
-    private PlayerState state;
     private Animator anim;
+
+    private PlayerState state;
 
     private PlayerInputAction inputActions;
 
@@ -41,8 +45,11 @@ public class DoorManager : MonoBehaviour
     private void NextLevel(InputAction.CallbackContext context)
     {
         if (canBeOpen && playerInRange)
-        {     
-            Debug.Log("To LAVA LEVEL!");
+        {
+            state.SetActionType(PlayerState.ActionType.Jump);
+            SceneManager.LoadScene(sceneName);
+            AudioManager.Instance.PlayMusic(nextOST);
+            
         }
     }
 
@@ -54,7 +61,8 @@ public class DoorManager : MonoBehaviour
             {
                 anim.SetBool("isOpening", true);
                 OpenDoor?.Invoke();
-                collision.GetComponent<PlayerState>().SetKeys(3);
+                collision.GetComponent<PlayerState>().SetKeys(0);
+                state = collision.GetComponent<PlayerState>();
             }
             playerInRange = true;
         }

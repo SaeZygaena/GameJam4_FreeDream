@@ -8,6 +8,7 @@ public class Collectible_Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.key_collected);
             AddKey?.Invoke();
             Destroy(gameObject);
         }

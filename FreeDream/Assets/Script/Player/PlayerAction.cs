@@ -98,7 +98,7 @@ public class PlayerAction : MonoBehaviour
 
     void OnAction(InputAction.CallbackContext context)
     {
-        if (!isPressDown)
+        if (!isPressDown && !state.GetIsNotMovable())
         {
             if (state.GetActionType() == PlayerState.ActionType.Jump)
                 JumpAction(context);

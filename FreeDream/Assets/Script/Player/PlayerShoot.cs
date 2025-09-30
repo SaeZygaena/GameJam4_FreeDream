@@ -41,24 +41,25 @@ public class PlayerShoot : MonoBehaviour
         _inputActions.Player.Attack.canceled -= OnShoot;
     }
 
-    public void resetAttack()
+    public void ResetAttack()
     {
         isAttacking = false;
     }
 
     public void OnShoot(InputAction.CallbackContext callback)
     {
-        if (callback.performed && !isAttacking && !state.GetIsJumping() && !state.GetIsJetPack() && !state.GetIsDead())
+        if (callback.performed && !isAttacking && !state.GetIsJumping() && !state.GetIsJetPack() && !state.GetIsDead() && !state.GetIsNotMovable())
         {
             anim.SetTrigger("attack");
             isAttacking = true;
         }
     }
 
-    public void animEventAttack()
+    public void AnimEventAttack()
     {
         GameObject tempo;
         isAttacking = false;
+        AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.player_attack);
         tempo = Instantiate(bullet, bulletOriginPos.position, Quaternion.identity);
         tempo.GetComponent<BulletBehavior>().isPlayer = true;
         if (state.GetIsFlipped())

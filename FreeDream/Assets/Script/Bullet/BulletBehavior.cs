@@ -92,7 +92,10 @@ public class BulletBehavior : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<HealthComponent>().HealChange(-power);
+            if (collision.GetComponent<HealthComponent>() != null)
+            {
+                collision.GetComponent<HealthComponent>().HealChange(-power);
+            }
         }
     }
 

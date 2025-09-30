@@ -4,7 +4,15 @@ using UnityEngine.InputSystem;
 
 public class BinocularManager : MonoBehaviour
 {
-    public static event Action<bool> ObservePanorama;
+    public enum PanoramaType
+    {
+        Following,
+        PanoramaOne
+    }
+    public static event Action<PanoramaType> ObservePanorama;
+
+    [SerializeField] private AudioManager.CodeOST panoramaOST;
+    [SerializeField] private AudioManager.CodeOST currentOST;
     private bool playerInRange = false;
     private bool isLooking = false;
     private PlayerInputAction inputActions;
@@ -39,13 +47,15 @@ public class BinocularManager : MonoBehaviour
         {
             if (!isLooking)
             {
-                ObservePanorama?.Invoke(true);
+                ObservePanorama?.Invoke(PanoramaType.PanoramaOne);
+                AudioManager.Instance.PlayMusic(AudioManager.CodeOST.dragon);
                 isLooking = true;
             }
             else
             {
-                ObservePanorama?.Invoke(false);
-                isLooking = true;
+                ObservePanorama?.Invoke(PanoramaType.Following);
+                AudioManager.Instance.PlayMusic(AudioManager.CodeOST.level_volcano);
+                isLooking = false;
             }
         }
     }

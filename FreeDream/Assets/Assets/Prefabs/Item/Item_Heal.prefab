@@ -186,6 +186,7 @@ MonoBehaviour:
   isDoT: 0
   isDestroyAfterUse: 1
   power: -2
+  isHeal: 1
 --- !u!95 &6956662960212627296
 Animator:
   serializedVersion: 7

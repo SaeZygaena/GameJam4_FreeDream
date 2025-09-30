@@ -185,6 +185,7 @@ public class DamageController : MonoBehaviour
 
     public void PlayerIsDead()
     {
+        Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -223,6 +224,7 @@ public class DamageController : MonoBehaviour
     private void TurretDeath()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.mob_death);
         Destroy(gameObject);
     }
 
@@ -233,6 +235,7 @@ public class DamageController : MonoBehaviour
     private void SwordmanDeath()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.mob_death);
         Destroy(gameObject);
     }
 
@@ -243,6 +246,7 @@ public class DamageController : MonoBehaviour
     private void GunnerDeath()
     {
         Instantiate(dropItem, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySFX(AudioManager.CodeSFX.mob_death);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
