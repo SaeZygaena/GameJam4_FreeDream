@@ -25,12 +25,18 @@ public class DamageController : MonoBehaviour
     private Animator anim;
     private Color color;
     private SpriteRenderer sprite;
+
+    private PlayerState state;
     void Start()
     {
         if (typeEntity != TypeEntity.Player)
         {
             sprite = GetComponent<SpriteRenderer>();
             color = sprite.color;
+        }
+        else
+        {
+            state = GetComponent<PlayerState>();
         }
         anim = GetComponent<Animator>();
     }
@@ -75,7 +81,7 @@ public class DamageController : MonoBehaviour
 
     private void PlayerDamage(float _change)
     {
-        if (!GetComponent<PlayerState>().GetIsDead() && _change < 0)
+        if (!state.GetIsDead() && _change < 0)
             anim.SetTrigger("hurt");
 
         if (_change < 0)
@@ -178,15 +184,18 @@ public class DamageController : MonoBehaviour
 
     private void PlayerDeath()
     {
-        if (!GetComponent<PlayerState>().GetIsDead())
+        PlayerState state = GetComponent<PlayerState>();
+
+        if (!state.GetIsDead())
             anim.SetTrigger("die");
-        GetComponent<PlayerState>().SetIsDead(true);
+       state.SetIsDead(true);
     }
 
     public void PlayerIsDead()
     {
-        Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        state.SetIsDead(false);
+        anim.SetTrigger("idle");
     }
 
 
